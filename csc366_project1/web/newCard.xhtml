@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+        <h1>Credit Card Screen</h1>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <h:panelGrid columns="3">
+
+                Credit Card #: <h:inputText value="#{card.cc_num}" required ="true"
+                                            binding="#{card.cardUI}"
+                                            requiredMessage="Your must enter a credit card number"
+                                            validatorMessage="Credit card number must be 16 integers"
+                                            id="cc_num">
+                    <f:convertNumber integerOnly="true"/>
+                    <f:validateLength minimum="16" maximum="16"/>
+                </h:inputText>
+                <h:message for="cc_num" style="color:red;margin:8px;"/>
+
+                Username: <h:inputText value="#{card.username}" required ="true"
+                                       requiredMessage="You must enter a username"
+                                       id="username"/>
+                <h:message for="username" style="color:red;margin:8px;"/>
+
+                Month: <h:inputText value="#{card.month}" required ="true"
+                                    requiredMessage="You must enter expiration month"
+                                    validatorMessage="Credit card month must be 1-2 integers"
+                                    id="month"/>
+                <f:convertNumber integerOnly="true"/>
+                <f:validateLength minimum = "1" maximum = "2" />
+                </h:inputText>
+                <h:message for="month" style="color:red;margin:8px;"/>
+
+
+                Year: <h:inputText value="#{card.year}" required ="true"
+                                   requiredMessage="You must enter expiration year"
+                                   validatorMessage="Credit card year must be 4 integers"
+                                   id="year"/>
+                <f:validateLength minimum = "4" maximum = "4" />
+                <f:convertNumber integerOnly="true"/>
+                <h:message for="month" style="color:red;margin:8px;"/>
+
+                CVV: <h:inputText value="#{card.cvv}" required ="true"
+                                   requiredMessage="You must enter cvv"
+                                   validatorMessage="Credit card cvv must be 3 integers"
+                                   id="cvv"/>
+                <f:validateLength minimum = "3" maximum = "3" />
+                <f:convertNumber integerOnly="true"/>
+                <h:message for="month" style="color:red;margin:8px;"/>
+
+            </h:panelGrid>
+            <h:panelGrid>
+                <h:commandButton value="Go" action="#{card.go}"/>
+            </h:panelGrid>
+        </h:form>
+
+
+    </h:body>
+</html>d

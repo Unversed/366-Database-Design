@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <title>New Customer</title>
+    <h:head>
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+        <h1>New Customer</h1>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="3">
+                Username: <h:inputText value="#{customer.username}" required ="true"
+                                       requiredMessage="Your must enter Username"
+                                       validator="#{customer.validateUsername}"
+                                       validatorMessage="Username already exist"
+                                       id="username"/>
+                <h:message for="username" style="color:red;margin:8px;"/>
+
+                Password: <h:inputText value="#{customer.password}" required ="true"
+                                       requiredMessage="Your must enter Password"
+                                       id="password"/>
+                <h:message for="password" style="color:red;margin:8px;"/>
+
+                First Name: <h:inputText value="#{customer.first}" required ="true"
+                                         requiredMessage="Your must enter Customer Name"
+                                         id="first"/>
+                <h:message for="first" style="color:red;margin:8px;"/>
+
+                Last Name: <h:inputText value="#{customer.last}" required ="true"
+                                        requiredMessage="Your must enter Customer Name"
+                                        id="last"/>
+                <h:message for="last" style="color:red;margin:8px;"/>
+
+                Email Address: <h:inputText value="#{customer.email}" required ="true"
+                                            requiredMessage="Your must enter Customer Name"
+                                            id="email"/>
+                <h:message for="email" style="color:red;margin:8px;"/>
+
+                Address: <h:inputText value="#{customer.address}" required ="true"
+                                      requiredMessage="Your must enter Customer Address"
+                                      validatorMessage="Address must be at least five characters"
+                                      id="userAddress">
+                    <f:validateLength minimum="5"/>
+                </h:inputText>
+                <h:message for="userAddress" style="color:red;margin:8px;"/>
+
+
+                <!--Date: <h:inputText value="{customer.created_date}" required ="true"
+                                   requiredMessage="Date Required"
+                                   converterMessage="Illegal date (should be mm/dd/yyyy)"
+                                   id="userDate">
+                <f:convertDateTime pattern="MM/dd/yyyy"/>
+                </h:inputText>
+                <h:message for="userDate" style="color:red;margin:8px;"/>-->
+
+                Credit Card : <h:inputText value="#{customer.cc_num}" required ="true"
+                                            requiredMessage="Your must enter a credit card number"
+                                            validatorMessage="Credit card number must be 16 integers"
+                                            id="cc_num">
+                    <f:convertNumber integerOnly="true"/>
+                    <f:validateLength minimum="16" maximum="16"/>
+                </h:inputText>
+                <h:message for="cc_num" style="color:red;margin:8px;"/>
+
+                Month: <h:inputText value="#{customer.month}" required ="true"
+                                    requiredMessage="You must enter expiration month"
+                                    validatorMessage="Credit card month must be 1-2 integers"
+                                    id="month">
+                    <f:convertNumber integerOnly="true"/>
+                    <f:validateLength minimum = "1" maximum = "2" />
+                    </h:inputText>
+                    <h:message for="month" style="color:red;margin:8px;"/>
+
+
+                    Year: <h:inputText value="#{customer.year}" required ="true"
+                                       requiredMessage="You must enter expiration year"
+                                       validatorMessage="Credit card year must be 4 integers"
+                                       id="year">
+                    <f:validateLength minimum = "4" maximum = "4" />
+                    <f:convertNumber integerOnly="true"/>
+                    </h:inputText>
+                    <h:message for="year" style="color:red;margin:8px;"/>
+                    
+                    
+                    CVV: <h:inputText value="#{customer.cvv}" required ="true"
+                                      requiredMessage="You must enter cvv"
+                                      validatorMessage="Credit card cvv must be 3 integers"
+                                      id="cvv">
+                    <f:validateLength minimum = "3" maximum = "3" />
+                    <f:convertNumber integerOnly="true"/>
+                    </h:inputText>
+                    <h:message for="cvv" style="color:red;margin:8px;"/>
+
+            </h:panelGrid>
+            <h:panelGrid>
+                <h:commandButton value="Go" action="#{customer.createCustomer}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
